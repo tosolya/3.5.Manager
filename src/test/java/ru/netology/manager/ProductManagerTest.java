@@ -83,7 +83,7 @@ class ProductManagerTest {
     void searchAllByAuthor() {
         setUp();
 
-        Product[] expected = new Product[]{first, second};
+        Product[] expected = new Product[]{second, first};
         Product[] actual = manager.searchBy("Хемингуэй");
         assertArrayEquals(expected, actual);
     }
@@ -93,7 +93,7 @@ class ProductManagerTest {
         setUp();
 
         Product[] expected = new Product[]{};
-        Product[] actual = manager.searchBy("Хемингуэй");
+        Product[] actual = manager.searchBy(null);
         assertArrayEquals(expected, actual);
     }
 

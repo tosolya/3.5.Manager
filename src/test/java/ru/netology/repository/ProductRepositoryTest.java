@@ -4,13 +4,15 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductRepositoryTest {
     private ProductRepository repository = new ProductRepository();
     private Book coreJava = new Book();
     Product first = new Book(1, "Фиеста", 1000, "Хемингуэй");
-    Product second = new Book(2, "Три товарища", 1100, "А.Хемингуэй");
+    Product second = new Book(2, "Три товарища", 1100, "Хемингуэй");
 
     @Test
     public void shouldSaveOneItem() {
@@ -23,14 +25,15 @@ public class ProductRepositoryTest {
     }
     @Test
     public void shouldRemoveIfExists() {
-        int idToRemove=2;
+        repository.save(first);
+
+        int idToRemove=1;
         repository.removeById(idToRemove);
 
-        Product[] expected = new Product[] {first};
+        Product[] expected = new Product[] {};
         Product[] actual = repository.getAll();
 
-        assertEquals(expected, actual);
-
+        assertArrayEquals(expected, actual);
 
     }
 
